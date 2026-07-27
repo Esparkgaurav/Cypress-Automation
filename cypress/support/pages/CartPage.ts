@@ -1,26 +1,38 @@
 class CartPage {
+
   // ========== Selectors ==========
   checkoutButton = '[data-test="checkout"]';
   continueShoppingButton = '[data-test="continue-shopping"]';
+  cartItem = ".cart_item";
+  productName = ".inventory_item_name";
 
   // ========== Actions ==========
+
   getCartItems() {
-    return cy.get(".cart_item");
+    return cy.get(this.cartItem);
   }
 
   removeItem(productName: string) {
-    cy.contains(".cart_item", productName)
+    cy.contains(this.cartItem, productName)
       .find("button")
       .click();
   }
 
-  clickCheckout() {
+  checkout() {
     cy.get(this.checkoutButton).click();
   }
 
-  clickContinueShopping() {
+  continueShopping() {
     cy.get(this.continueShoppingButton).click();
   }
+
+  verifyProductExists(productName: string) {
+
+    cy.get(this.productName)
+      .should("contain.text", productName);
+
+  }
+
 }
 
 export default new CartPage();

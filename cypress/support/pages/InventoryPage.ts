@@ -9,37 +9,14 @@ class InventoryPage {
   allitemsprice = ".inventory_item_price";
 
   // ========== Actions ==========
-  addToCart(productName: string) {
-    cy.contains(".inventory_item", productName)
-      .find("button")
-      .click();
-  }
+  verifyUrl() {
+    cy.url().should("include", "inventory");
+}
 
-  removeFromCart(productName: string) {
-    cy.contains(".inventory_item", productName)
-      .find("button")
-      .click();
-  }
-
-  goToCart() {
-    cy.get(this.cartIcon).click();
-  }
-
-  getCartCount() {
-    return cy.get(this.cartBadge);
-  }
-
-  sortProducts(option: "az" | "za" | "lohi" | "hilo") {
-    cy.get(this.sortDropdown).select(option);
-  }
-
-  verifyurl(){
-    cy.url().should("include","inventory");
-  }
-
-  verifypagetitle(){
-    cy.get(this.pageTitle).should("have.text","Products");
-  }
+verifyPageTitle() {
+    cy.get(this.pageTitle)
+      .should("have.text", "Products");
+}
 
   productsNamesValues(){
     cy.get(this.allitems).each(($el) => {
@@ -55,6 +32,15 @@ class InventoryPage {
       .closest(".inventory_item")
       .find("button")
       .click();
+  }
+
+  openCart() {
+    cy.get(this.cartIcon).click();
+}
+
+verifyCartCount(expectedCount: number) {
+    cy.get(this.cartBadge)
+      .should("have.text", expectedCount.toString());
 }
 }
 
