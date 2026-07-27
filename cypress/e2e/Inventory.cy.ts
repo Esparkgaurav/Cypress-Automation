@@ -28,7 +28,7 @@ describe("Inventory Functionality", () => {
   });
 
   it('should add a specific product to cart', () => {
-    cy.addProductToCart("Sauce Labs Backpack");
+    InventoryPage.addProductToCart("Sauce Labs Backpack");
   })
 
 });
