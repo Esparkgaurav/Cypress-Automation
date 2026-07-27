@@ -3,6 +3,10 @@ class InventoryPage {
   cartIcon = '[data-test="shopping-cart-link"]';
   cartBadge = '[data-test="shopping-cart-badge"]';
   sortDropdown = '[data-test="product_sort_container"]';
+  pageTitle = ".title";
+  allitems = ".inventory_item";
+  allitemasname = ".inventory_item_name";
+  allitemsprice = ".inventory_item_price";
 
   // ========== Actions ==========
   addToCart(productName: string) {
@@ -34,8 +38,18 @@ class InventoryPage {
   }
 
   verifypagetitle(){
-    cy.get(".title").should("have.text","Products");
+    cy.get(this.pageTitle).should("have.text","Products");
   }
+
+  productsNamesValues(){
+    cy.get(this.allitems).each(($el) => {
+      const name = $el.find(this.allitemasname).text();
+      const price = $el.find(this.allitemsprice).text();
+      cy.log(`${name} - ${price}`);
+    })
+  }
+
+
 
 }
 

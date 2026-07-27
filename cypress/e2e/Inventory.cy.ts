@@ -27,4 +27,8 @@ describe("Inventory Functionality", () => {
 
   });
 
+  it("Print all product name with values", ()=>{
+    InventoryPage.productsNamesValues();
+  })
+
 });
