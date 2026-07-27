@@ -49,8 +49,13 @@ class InventoryPage {
     })
   }
 
-
-
+  addProductToCart(productName: string) {
+    cy.get(".inventory_item")
+      .contains(".inventory_item_name", productName)
+      .closest(".inventory_item")
+      .find("button")
+      .click();
+}
 }
 
 export default new InventoryPage();

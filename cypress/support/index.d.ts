@@ -11,5 +11,7 @@ declare namespace Cypress {
      * @example cy.login('standard_user', 'secret_sauce')
      */
     login(username: string, password: string): Chainable<void>;
+
+    addProductToCart(productName: string): Chainable<void>;
   }
 }

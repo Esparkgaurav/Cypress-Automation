@@ -11,3 +11,4 @@ Cypress.Commands.add("login", (username: string, password: string) => {
   cy.getByTest("password").clear().type(password);
   cy.getByTest("login-button").click();
 });
+

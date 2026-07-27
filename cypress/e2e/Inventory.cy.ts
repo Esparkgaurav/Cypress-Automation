@@ -27,8 +27,8 @@ describe("Inventory Functionality", () => {
 
   });
 
-  it("Print all product name with values", ()=>{
-    InventoryPage.productsNamesValues();
+  it('should add a specific product to cart', () => {
+    cy.addProductToCart("Sauce Labs Backpack");
   })
 
 });
