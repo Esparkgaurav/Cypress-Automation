@@ -1,4 +1,5 @@
 import LoginPage from "../support/pages/LoginPage";
+import InventoryPage from "../support/pages/InventoryPage";
 
 describe("Inventory Functionality", () => {
 
@@ -17,10 +18,12 @@ describe("Inventory Functionality", () => {
 
   });
 
-  it("Should display six products", () => {
+  it("Verification on Inventory page", () => {
 
     cy.get(".inventory_item")
       .should("have.length", 6);
+    InventoryPage.verifyurl();
+    InventoryPage.verifypagetitle();
 
   });
 
