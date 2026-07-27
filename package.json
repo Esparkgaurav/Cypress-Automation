@@ -1,0 +1,32 @@
+{
+  "name": "cypress-saucedemo",
+  "version": "1.0.0",
+  "description": "Professional Cypress Automation Framework with TypeScript",
+  "private": true,
+
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+
+    "test": "npm run clean:reports && cypress run",
+
+    "clean:reports": "rimraf cypress/reports",
+
+    "report": "start cypress/reports/index.html",
+
+    "test:chrome": "cypress run --browser chrome",
+    "test:edge": "cypress run --browser edge",
+    "test:firefox": "cypress run --browser firefox"
+  },
+
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "cypress": "^15.19.0",
+    "cypress-mochawesome-reporter": "^4.0.2",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.3"
+  }
+}
