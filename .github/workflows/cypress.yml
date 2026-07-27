@@ -4,12 +4,10 @@ on:
   push:
     branches:
       - main
-      - master
 
   pull_request:
     branches:
       - main
-      - master
 
   workflow_dispatch:
 
@@ -23,7 +21,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -35,7 +33,7 @@ jobs:
       - name: Run Cypress Tests
         run: npm test
 
-      - name: Upload HTML Report
+      - name: Upload Mochawesome Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -50,7 +48,7 @@ jobs:
           path: cypress/videos
 
       - name: Upload Screenshots
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: Cypress-Screenshots
